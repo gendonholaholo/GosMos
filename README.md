@@ -15,11 +15,21 @@ A standalone Command Line Interface (CLI) tool for TikTok Shop data scraping, an
 
 ## Installation
 
+To install `gosmoscli`, ensure it is available on PyPI or install from source:
+
 ```bash
 pip install gosmoscli
 ```
 
+If installing from source, navigate to the project directory and run:
+
+```bash
+pip install .
+```
+
 ## Usage
+
+The CLI can be used with the following command structure:
 
 ```bash
 gosmoscli [command] [options]
@@ -217,6 +227,12 @@ Create a config file at `~/.gosmoscli/config.json`:
 }
 ```
 
+Each parameter in the configuration file is crucial for customizing the behavior of the CLI:
+- **proxy**: Manages proxy settings, including enabling/disabling, list of proxies, and rotation settings.
+- **ai**: Configures AI provider and API key for content generation.
+- **output**: Specifies the format and directory for output files.
+- **scraping**: Controls scraping behavior, including rate limits, retry attempts, and concurrency settings.
+
 ## Testing
 
 The project includes a comprehensive test suite:
@@ -230,6 +246,12 @@ pytest tests/test_scraper.py
 
 # Run with coverage
 pytest --cov=core tests/
+```
+
+Ensure all dependencies are installed before running tests. You can install test dependencies with:
+
+```bash
+pip install -r requirements.txt
 ```
 
 Current test coverage:
