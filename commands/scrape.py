@@ -3,6 +3,7 @@ from rich.console import Console
 from rich.progress import Progress
 from typing import Optional
 from pathlib import Path
+import csv
 
 app = typer.Typer(
     name="scrape",
@@ -24,14 +25,21 @@ def products(
     """
     console.print(f"[bold green]Starting product scrape for query: {query}[/bold green]")
     
-    # TODO: Implement actual scraping logic
-    with Progress() as progress:
-        task = progress.add_task("[cyan]Scraping products...", total=limit)
-        
-        # Simulate progress
-        for i in range(limit):
-            progress.update(task, advance=1)
-    
+    # Simulate data
+    data = [
+        {"product_id": i, "name": f"Product {i}", "price": f"${i * 10}"} for i in range(limit)
+    ]
+
+    output_dir = Path('./output')
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output = output_dir / output
+
+    # Write data to CSV
+    with open(output, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=["product_id", "name", "price"])
+        writer.writeheader()
+        writer.writerows(data)
+
     console.print(f"[bold green]Scraping completed! Results saved to {output}[/bold green]")
 
 @app.command()
@@ -45,14 +53,21 @@ def creators(
     """
     console.print(f"[bold green]Starting creator scrape for query: {query}[/bold green]")
     
-    # TODO: Implement actual scraping logic
-    with Progress() as progress:
-        task = progress.add_task("[cyan]Scraping creators...", total=limit)
-        
-        # Simulate progress
-        for i in range(limit):
-            progress.update(task, advance=1)
-    
+    # Simulate data
+    data = [
+        {"creator_id": i, "name": f"Creator {i}", "followers": i * 1000} for i in range(limit)
+    ]
+
+    output_dir = Path('./output')
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output = output_dir / output
+
+    # Write data to CSV
+    with open(output, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=["creator_id", "name", "followers"])
+        writer.writeheader()
+        writer.writerows(data)
+
     console.print(f"[bold green]Scraping completed! Results saved to {output}[/bold green]")
 
 @app.command()
@@ -66,14 +81,21 @@ def videos(
     """
     console.print(f"[bold green]Starting video scrape for creator: {creator_id}[/bold green]")
     
-    # TODO: Implement actual scraping logic
-    with Progress() as progress:
-        task = progress.add_task("[cyan]Scraping videos...", total=limit)
-        
-        # Simulate progress
-        for i in range(limit):
-            progress.update(task, advance=1)
-    
+    # Simulate data
+    data = [
+        {"video_id": i, "title": f"Video {i}", "url": f"http://example.com/video{i}.mp4"} for i in range(limit)
+    ]
+
+    output_dir = Path('./output/videos')
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output = output_dir / output
+
+    # Write data to CSV
+    with open(output, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=["video_id", "title", "url"])
+        writer.writeheader()
+        writer.writerows(data)
+
     console.print(f"[bold green]Scraping completed! Results saved to {output}[/bold green]")
 
 if __name__ == "__main__":

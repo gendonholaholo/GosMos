@@ -29,7 +29,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "mosscli=mosscli.cli:main",
+            "mosscli=gosmoscli.cli:main",
         ],
     },
 ) 

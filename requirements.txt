@@ -42,4 +42,7 @@ pytz>=2023.3
 pyyaml>=6.0.1
 
 # Development Tools
-isort>=5.12.0 
+isort>=5.12.0
+
+# Added from the code block
+typer>=0.4.0 
