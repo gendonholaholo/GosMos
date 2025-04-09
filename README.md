@@ -299,3 +299,82 @@ The project is currently in active development with the following status:
 - Performance optimizations
 - Extended test coverage
 - Additional data formats support
+
+## Detailed Usage Guide
+
+### Command Examples
+
+- **Scrape Product Data**:
+  ```bash
+  gosmoscli scrape products --query "fashion" --limit 100
+  ```
+  This command scrapes up to 100 fashion products from TikTok Shop.
+
+- **Analyze Trends**:
+  ```bash
+  gosmoscli analyze trends --product-id "123456" --period "7d"
+  ```
+  Analyzes trends for the specified product over the last 7 days.
+
+- **Generate Content**:
+  ```bash
+  gosmoscli ai-toolbox generate --type "caption" --product-id "123456"
+  ```
+  Generates a caption for the specified product.
+
+- **Monitor Live Streams**:
+  ```bash
+  gosmoscli live-monitor --seller-id "seller123"
+  ```
+  Monitors live streams for the specified seller.
+
+### Workflow Example
+1. **Install the CLI**: Follow the installation instructions.
+2. **Configure Settings**: Create and customize your `config.json`.
+3. **Scrape Data**: Use the `scrape` command to gather data.
+4. **Analyze Data**: Use the `analyze` command to process and understand the data.
+5. **Generate Content**: Use the `generate` command to create content based on analysis.
+
+## Configuration Details
+
+Create a configuration file at `~/.gosmoscli/config.json` with the following structure:
+
+```json
+{
+  "api_key": "your_api_key_here",
+  "proxy": "http://username:password@proxyserver:port",
+  "output_directory": "./output",
+  "max_workers": 5,
+  "timeout": 30
+}
+```
+
+- **api_key**: Your API key for accessing TikTok Shop data.
+- **proxy**: Proxy settings for scraping.
+- **output_directory**: Directory where output files will be saved.
+- **max_workers**: Number of concurrent workers for processing.
+- **timeout**: Request timeout in seconds.
+
+## Output Structure
+
+The output data is stored in the specified output directory in CSV and JSON formats. Each command generates a specific output:
+
+- **Scrape**: Generates CSV files for products, creators, and videos.
+- **Analyze**: Outputs JSON files with analysis results.
+- **Generate**: Produces text files with generated content.
+
+## Troubleshooting
+
+- **Installation Issues**: Ensure all dependencies are installed using `pip install -r requirements.txt`.
+- **Command Errors**: Check the command syntax and ensure all required options are provided.
+- **Configuration Problems**: Verify the `config.json` file is correctly formatted and all necessary fields are filled.
+
+## Quickstart Guide
+
+For a quick start, refer to `docs/quickstart.md` for step-by-step instructions on setting up and using the GosMos CLI.
+
+## Readiness Declaration
+
+> ✅ Status: Siap diuji oleh pengguna (User-Ready v1.0)
+
+This application is ready for user testing and feedback. Please follow the documentation for setup and usage instructions.
